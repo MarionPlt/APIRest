@@ -1,4 +1,4 @@
-package com.example.APIRest;
+package com.example.apirest;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

@@ -1,4 +1,4 @@
-package com.example.APIRest;
+package com.example.apirest;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -7,6 +7,6 @@ import java.util.List;
 @Repository
 public interface ClientRepository extends CrudRepository <Client, String>{
 
-    List<Client> findByAll( String guid, String firstName, String lastName, String street, String city, int zip );
+    List<Client> findByGuidAndFirstNameAndLastNameAndStreetAndCityAndZip( String guid, String firstName, String lastName, String street, String city, int zip );
 
 }
