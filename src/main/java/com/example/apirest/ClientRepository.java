@@ -7,6 +7,6 @@ import java.util.List;
 @Repository
 public interface ClientRepository extends CrudRepository <Client, String>{
 
-    List<Client> findByGuidAndFirstNameAndLastNameAndStreetAndCityAndZip( String guid, String firstName, String lastName, String street, String city, int zip );
+    List<Client> findByGuidContainsAndFirstNameContainsAndLastNameContainsAndStreetContainsAndCityContainsAndZipContainsAllIgnoreCase( String guid, String firstName, String lastName, String street, String city, int zip );
 
 }

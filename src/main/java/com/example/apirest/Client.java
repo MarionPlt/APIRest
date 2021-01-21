@@ -1,15 +1,14 @@
 package com.example.apirest;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name= "client")
 public class Client {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
     private String guid;
+    @Column(name="first")
     private String firstName;
+    @Column(name="last")
     private String lastName;
     private String street;
     private String city;
