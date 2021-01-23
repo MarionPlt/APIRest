@@ -6,13 +6,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController //on détermine le role de la classe
+@RestController
 public class ClientController {
 
     @Autowired
     private ClientRepository clientRepository;
-    //quand l'application démarre je n'ai pas besoin de créer un nouveau client de ClientRepository
-    // il gère la fougère (initie le clientRepository, le clientController)
+
 
     @GetMapping(path = "/clients", produces = "application/json")
     public Iterable<Client> getClients(

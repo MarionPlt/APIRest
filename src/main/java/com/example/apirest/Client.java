@@ -2,7 +2,7 @@ package com.example.apirest;
 import javax.persistence.*;
 
 @Entity
-@Table(name= "client")
+@Table(name= "clients")
 public class Client {
     @Id
     private String guid;

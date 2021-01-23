@@ -5,5 +5,7 @@ ENV MYSQL_USER="User_EPSI"
 #le vrai mot de passe devrait être dans une solution sécurisée comme https://www.vaultproject.io/
 ENV MYSQL_PASSWORD="epsi"
 ENV MYSQL_ROOT_PASSWORD="toor"
-COPY clients.sql /docker-entrypoint-initdb.d/
-#OU docker run -d -v "%cd%"/clients.sql:/docker-entrypoint-initdb.d/test.sql:ro -p 3310:3306 clientdb
+COPY 01_client.sql /docker-entrypoint-initdb.d/
+COPY 02_client.sql /docker-entrypoint-initdb.d/
+#OU docker run -d -v "%cd%"/01_client.sql:/docker-entrypoint-initdb.d/test.sql:ro -p 3310:3306 clientdb
+
