@@ -1,0 +1,10 @@
+<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+  <input type="text" [(ngModel)]="request.lastName"
+         id="lastName"
+         name="lastName"
+         placeHolder="Enter your name"
+         required #lastName="ngModel">
+  <button type="submit" [disabled]="!userForm.form.valid"
+          class="btn btn-info">Submit
+  </button>
+</form>
