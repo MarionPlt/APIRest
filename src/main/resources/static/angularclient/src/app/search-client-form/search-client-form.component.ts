@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SearchClientRequest} from '../search-client-request';
+import {ClientService} from '../service/client.service';
 
 @Component({
   selector: 'app-search-client-form',
@@ -8,10 +9,9 @@ import {SearchClientRequest} from '../search-client-request';
 })
 export class SearchClientFormComponent implements OnInit {
 
-
   request: SearchClientRequest;
 
-  constructor() {
+  constructor(private clientService: ClientService) {
     this.request = new SearchClientRequest();
   }
 
@@ -20,5 +20,6 @@ export class SearchClientFormComponent implements OnInit {
 
   onSubmit(): void {
     console.log('Hello caneton!', this.request);
+    this.clientService.findAll().subscribe(result => console.log(result));
   }
 }

@@ -13,6 +13,7 @@ export class ClientService {
   }
 
   public findAll(): Observable<Client[]> {
+    console.log('putain de log');
     return this.http.get<Client[]>(this.clientsUrl);
   }
 }
