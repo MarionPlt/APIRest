@@ -20,6 +20,6 @@ export class SearchClientFormComponent implements OnInit {
 
   onSubmit(): void {
     console.log('Hello caneton!', this.request);
-    this.clientService.findAll().subscribe(result => console.log(result));
+    this.clientService.search(this.request).subscribe(result => console.log(result));
   }
 }

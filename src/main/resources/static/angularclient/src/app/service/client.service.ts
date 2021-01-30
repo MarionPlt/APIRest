@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Client} from '../Model/client';
 import {Observable} from 'rxjs';
+import {SearchClientRequest} from '../search-client-request';
 
 @Injectable()
 export class ClientService {
@@ -13,8 +14,12 @@ export class ClientService {
   }
 
   public findAll(): Observable<Client[]> {
-    console.log('putain de log');
     return this.http.get<Client[]>(this.clientsUrl);
+  }
+
+  public search(request: SearchClientRequest): Observable<Client[]>{
+    const options = { params: new HttpParams().set('lastName', request.lastName) } ;
+    return this.http.get<Client[]>(this.clientsUrl, options);
   }
 }
 
