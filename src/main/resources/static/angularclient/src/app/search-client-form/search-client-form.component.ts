@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {SearchClientRequest} from '../search-client-request';
 import {ClientService} from '../service/client.service';
 
@@ -8,10 +8,10 @@ import {ClientService} from '../service/client.service';
   styleUrls: ['./search-client-form.component.scss']
 })
 export class SearchClientFormComponent implements OnInit {
-
+  @Output() search = new EventEmitter<SearchClientRequest>();
   request: SearchClientRequest;
 
-  constructor(private clientService: ClientService) {
+  constructor() {
     this.request = new SearchClientRequest();
   }
 
@@ -19,7 +19,6 @@ export class SearchClientFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('Hello caneton!', this.request);
-    this.clientService.search(this.request).subscribe(result => console.log(result));
+    this.search.emit(this.request);
   }
 }

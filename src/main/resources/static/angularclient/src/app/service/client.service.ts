@@ -23,3 +23,5 @@ export class ClientService {
   }
 }
 
+
+//todo : ajouter des arguments à mon search en faisant .set().set()... voir : https://angular.io/api/common/http/HttpParams#set
