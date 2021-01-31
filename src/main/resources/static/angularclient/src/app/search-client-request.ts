@@ -1,3 +1,8 @@
 export class SearchClientRequest {
-  lastName: string;
+  guid = '';
+  firstName = '';
+  lastName = '';
+  street = '';
+  city = '';
+  zip = 0;
 }

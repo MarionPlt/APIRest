@@ -1,2 +1,5 @@
 <app-search-client-form (search)="onSearch($event)"></app-search-client-form>
-<h2>{{clients.length}}</h2>
+<h2 >{{clients.length}} résultat(s)</h2>
+<app-client-list [clients]="clients"></app-client-list>
+
+

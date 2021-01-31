@@ -1,6 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {SearchClientRequest} from '../search-client-request';
-import {ClientService} from '../service/client.service';
 
 @Component({
   selector: 'app-search-client-form',

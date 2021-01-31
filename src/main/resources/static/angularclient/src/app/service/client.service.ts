@@ -18,10 +18,17 @@ export class ClientService {
   }
 
   public search(request: SearchClientRequest): Observable<Client[]>{
-    const options = { params: new HttpParams().set('lastName', request.lastName) } ;
+    let params = new HttpParams();
+    if ( request.guid !== ''){ params = params.set('guid', request.guid); }
+    if ( request.firstName !== ''){ params = params.set('firstName', request.firstName); }
+    if ( request.lastName !== ''){ params = params.set('lastName', request.lastName); }
+    if ( request.street !== ''){ params = params.set('street', request.street); }
+    if ( request.city !== ''){ params = params.set('city', request.city); }
+    if ( request.zip !== 0){ params = params.set('zip', String(request.zip)); }
+
+    const options = {params};
     return this.http.get<Client[]>(this.clientsUrl, options);
   }
 }
 
 
-//todo : ajouter des arguments à mon search en faisant .set().set()... voir : https://angular.io/api/common/http/HttpParams#set
