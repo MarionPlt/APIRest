@@ -1,8 +1,8 @@
 FROM node:15.10 AS frontBuilder
 RUN npm install -g @angular/cli@11.0.5
 COPY ./angularclient /
-WORKDIR /angularclient
 RUN ng build
+
 
 FROM maven:3.6-jdk-11 AS springbootBuilder
 COPY ./pom.xml /
