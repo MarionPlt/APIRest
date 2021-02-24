@@ -1,0 +1,28 @@
+version: '2.4'
+
+services:
+  database:
+    image: pmarionp/basededonnees
+    build: ./maria/
+    healthcheck:
+      test: mysqladmin ping --user='User_EPSI' --password='epsi' | grep 'mysqld is alive'
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+
+  api:
+    image: pmarionp/apirestepsib3
+    build: ./
+    ports:
+      - '8080:8080'
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:mysql://database:3306/apiclients'
+      SPRING_DATASOURCE_USERNAME: 'User_EPSI'
+      SPRING_DATASOURCE_PASSWORD: 'epsi'
+    depends_on:
+      database:
+        condition: service_healthy
+
+
