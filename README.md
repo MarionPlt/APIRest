@@ -3,3 +3,6 @@
 une fois que le projet a été récupéré lancer la commande : 
 
 docker-compose up --detach --build
+
+
+lancer http://localhost:8080
