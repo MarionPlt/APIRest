@@ -1,16 +1,15 @@
 FROM node:15.10 AS frontBuilder
-RUN npm install -g @angular/cli@11.0.5
-COPY ./angularclient /
-RUN ng build
-
+COPY ./angularclient /angularclient
+WORKDIR /angularclient
+RUN npm install
+RUN /angularclient/node_modules/@angular/cli/bin/ng build
 
 FROM maven:3.6-jdk-11 AS springbootBuilder
-COPY ./pom.xml /
-COPY ./src /
+COPY . /
 COPY --from=frontBuilder /angularclient/dist/angularclient/* /src/main/resources/static/
-RUN mvn package
-#no integration test run unless maven verify instead of package
+# Build JAR file AND execute both unit and integration test (or fail)
+RUN mvn verify
 
 FROM openjdk:11-jre-slim AS production
-COPY --from=springbootBuilder /target/*.jar /app.jar
+COPY --from=springbootBuilder /target/app.jar /app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
